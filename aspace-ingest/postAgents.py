@@ -33,7 +33,7 @@ agents_csv = 'ASagents_EE.csv'
 
 # Open csv, create new csv
 csv_dict = csv.DictReader(open(agents_csv))
-f=csv.writer(open(agents_csv, 'wb'))
+f=csv.writer(open('new_' + agents_csv, 'wb'))
 f.writerow(['primary_name']+['subordinate_name_1']+['uri'])
 
 # Construct JSON to post from csv
