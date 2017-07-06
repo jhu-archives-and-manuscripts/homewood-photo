@@ -44,7 +44,7 @@ for row in csv_dict:
 	title = row['title']
 	digital_object_id = row['objectid']
 	doRecord = {'title': title, 'digital_object_id': digital_object_id, 'publish': True}
-	doRecord['file_versions'] = [{'file_uri': file_uri, 'publish': False, 'file_format_name': 'tiff'}]
+	doRecord['file_versions'] = [{'file_uri': file_uri, 'publish': False, 'file_format_name': 'dng'}]
 	doRecord = json.dumps(doRecord)
 	post = requests.post(baseURL + '/repositories/'+ repository + '/digital_objects', headers=headers, data=doRecord).json()
 	print post
