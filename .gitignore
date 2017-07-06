@@ -1,0 +1,8 @@
+
+*.csv
+
+*.xlsx
+
+*.pyc
+
+aspace-ingest/secrets.py
