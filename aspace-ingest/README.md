@@ -1,0 +1,8 @@
+Order of operations:
+
+1. Create missing agents from agents csv using postAgents.py.
+2. Post top_containers from top_containers csv using postContainersFromCSV.py.
+3. Post digital_objects from digital_objects csv using postDOs.py.
+4. Create series under which all archival_objects will exist.  Note the uri for this parent series.
+5. Modify master archival_object spreadsheet to include new agent, top_container, and digital_object uris.
+6. Post archival_objects using postAOs.py.
