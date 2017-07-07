@@ -33,8 +33,10 @@ auth = requests.post(baseURL + '/users/'+user+'/login?password='+password).json(
 session = auth["session"]
 headers = {'X-ArchivesSpace-Session':session, 'Content_Type':'application/json'}
 
-# File name of csv
-container_csv = ''
+# User supplied variables name of csv
+container_csv = raw_input('Enter csv filename: ')
+collection = raw_input('Enter resource record uri: ')
+container_profile = raw_input('Enter container profile uri: ')
 
 # Open csv, create new csv
 csv_dict = csv.DictReader(open(container_csv))
@@ -42,10 +44,12 @@ f=csv.writer(open('new_' + container_csv, 'wb'))
 f.writerow(['indicator']+['barcode']+['uri'])
 
 containerList = []
-for row in csv:
-    containerRecord = {}
-    containerRecord['barcode'] = row['barcode']
-    containerRecord['indicator'] = row['indicator']
+for row in csv_dict:
+    barcode = row['barcode']
+    indicator = row['indicator']
+    containerRecord = {'barcode': barcode, 'indicator': indicator}
+    containerRecord['collection'] = [{'ref': '/repositories/' + repository + '/resources/' + collection}]
+    containerRecord['container_profile'] = {'ref': '/container_profiles/' + container_profile}
     containerRecord = json.dumps(containerRecord)
     post = requests.post(baseURL + '/repositories/'+ repository + '/top_containers', headers=headers, data=containerRecord).json()
     print post

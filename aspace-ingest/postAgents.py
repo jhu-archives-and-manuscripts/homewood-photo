@@ -29,7 +29,7 @@ session = auth["session"]
 headers = {'X-ArchivesSpace-Session':session, 'Content_Type':'application/json'}
 
 # File name of csv
-agents_csv = 'ASagents_EE.csv'
+agents_csv = raw_input('Enter csv filename: ')
 
 # Open csv, create new csv
 csv_dict = csv.DictReader(open(agents_csv))
