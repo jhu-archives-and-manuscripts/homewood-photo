@@ -29,7 +29,7 @@ auth = requests.post(baseURL + '/users/'+user+'/login?password='+password).json(
 session = auth["session"]
 headers = {'X-ArchivesSpace-Session':session, 'Content_Type':'application/json'}
 
-# File name of csv
+# User supplied variables
 do_csv = raw_input('Enter csv filename: ')
 
 # Open csv, create new csv

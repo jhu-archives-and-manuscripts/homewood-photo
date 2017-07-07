@@ -33,7 +33,7 @@ auth = requests.post(baseURL + '/users/'+user+'/login?password='+password).json(
 session = auth["session"]
 headers = {'X-ArchivesSpace-Session':session, 'Content_Type':'application/json'}
 
-# User supplied variables name of csv
+# User supplied variables
 container_csv = raw_input('Enter csv filename: ')
 collection = raw_input('Enter resource record uri: ')
 container_profile = raw_input('Enter container profile uri: ')
