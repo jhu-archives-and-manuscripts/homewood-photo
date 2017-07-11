@@ -1,8 +1,7 @@
 Order of operations:
 
 1. Create missing agents from agents csv using postAgents.py.
-2. Post top_containers from top_containers csv using postContainersFromCSV.py.
-3. Post digital_objects from digital_objects csv using postDOs.py.
-4. From within ArchivesSpace staff interface create series under which all archival_objects will exist.  Note the uri for this parent series (you will be prompted to enter it when running the postAOs.py script).
-5. Modify master archival_object spreadsheet to include new agent, top_container, and digital_object uris.
-6. Post archival_objects using postAOs.py.
+2. Identify uri of resource record and uri of container_profile for collection (creating a container_profile if one does not exist).  Post top_containers from top_containers csv using postContainersFromCSV.py, supplying uri's when requested.
+3. Confirm file format type of "dng" exists in file format types controlled value list.  Post digital_objects from digital_objects csv using postDOs.py.
+4. Modify master archival_object spreadsheet to include new agents, top_container, and digital_object uris.
+5. Identify uri of resource record and uri of parent series record.  Post archival_objects using postAOs.py.
