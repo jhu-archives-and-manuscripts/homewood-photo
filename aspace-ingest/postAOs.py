@@ -79,19 +79,24 @@ for row in csv_dict:
 	else:
 		aoRecord['linked_agents'] = [{'role': 'creator', 'relator': 'pht', 'ref': '/agents/corporate_entities/388'}]
 	# instances
-	# if not top_container_2 == '' and not top_container_3 == '':
-	# 	aoRecord['linked_agents'] = {'role': 'creator', 'relator': 'pht', 'ref': 'agents/corporate_entities/388'}, {'role': 'creator', 'relator': 'spn', 'ref': agent_2}, {'role': 'creator', 'relator': 'spn', 'ref': agent_3}
-	# elif not top_container_2 == '' and top_container_3 == '':
-	# 	aoRecord['subjects'] = {'role': 'creator', 'relator': 'pht', 'ref': 'agents/corporate_entities/388'}, {'role': 'creator', 'relator': 'spn', 'ref': agent_2}
-	# elif not top_container_1 == '':
-	# else:
+	# if not second_top_container == '' and not third_top_container == '':
+ # 		container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_1': 'box', 'indicator_1': second_indicator_1, 'type_2': 'item', 'indicator_2': second_indicator_2}, {'type_1': 'box', 'indicator_1': third_indicator_1, 'type_2': 'item', 'indicator_2': third_indicator_2}
+	# 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_2': 'item', 'indicator_2': second_indicator_2}, {'type_2': 'item', 'indicator_2': third_indicator_2}
+	# 	sub_container['top_container'] = {'ref': first_top_container}, {'ref': second_top_container}, {'ref': third_top_container}
+	# 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
+	# # elif not second_top_container == '' and third_top_container == '':
+	# # 	container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_1': 'box', 'indicator_1': second_indicator_1, 'type_2': 'item', 'indicator_2': second_indicator_2}
+	# # 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_2': 'item', 'indicator_2': second_indicator_2}
+	# # 	sub_container['top_container'] = {'ref': first_top_container}, {'ref': second_top_container}
+	# # 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
 	if not first_top_container == '':
 		container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}
 		sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}
 		sub_container['top_container'] = {'ref': first_top_container}
 		aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
-	# digital objects
+	# # digital objects
 	# notes
+	# resource and parent
 	# Note: needs to have a linked resource or else NoMethodError
 	aoRecord['resource'] = {'ref': '/repositories/3/resources/' + resource_record}
 	aoRecord['parent'] = {'ref': '/repositories/3/archival_objects/' + parent_series}
