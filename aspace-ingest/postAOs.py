@@ -89,12 +89,15 @@ for row in csv_dict:
 	# # 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_2': 'item', 'indicator_2': second_indicator_2}
 	# # 	sub_container['top_container'] = {'ref': first_top_container}, {'ref': second_top_container}
 	# # 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
-	if not first_top_container == '':
-		container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}
-		sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}
-		sub_container['top_container'] = {'ref': first_top_container}
-		aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
-	# # digital objects
+	# if not first_top_container == '':
+	# 	container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}
+	# 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}
+	# 	sub_container['top_container'] = {'ref': first_top_container}
+	# 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
+	# digital objects
+	if not digital_object =='':
+		digital_object = {'ref': digital_object}
+		aoRecord['instances'] = [{'instance_type': 'digital_object', 'digital_object': digital_object}]
 	# notes
 	# resource and parent
 	# Note: needs to have a linked resource or else NoMethodError
