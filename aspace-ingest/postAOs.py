@@ -78,26 +78,37 @@ for row in csv_dict:
 		aoRecord['linked_agents'] = {'role': 'creator', 'relator': 'pht', 'ref': '/agents/corporate_entities/388'}, {'role': 'creator', 'relator': 'spn', 'ref': agent_2}
 	else:
 		aoRecord['linked_agents'] = [{'role': 'creator', 'relator': 'pht', 'ref': '/agents/corporate_entities/388'}]
-	# instances
-	# if not second_top_container == '' and not third_top_container == '':
- # 		container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_1': 'box', 'indicator_1': second_indicator_1, 'type_2': 'item', 'indicator_2': second_indicator_2}, {'type_1': 'box', 'indicator_1': third_indicator_1, 'type_2': 'item', 'indicator_2': third_indicator_2}
-	# 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_2': 'item', 'indicator_2': second_indicator_2}, {'type_2': 'item', 'indicator_2': third_indicator_2}
-	# 	sub_container['top_container'] = {'ref': first_top_container}, {'ref': second_top_container}, {'ref': third_top_container}
-	# 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
-	# # elif not second_top_container == '' and third_top_container == '':
-	# # 	container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_1': 'box', 'indicator_1': second_indicator_1, 'type_2': 'item', 'indicator_2': second_indicator_2}
-	# # 	sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}, {'type_2': 'item', 'indicator_2': second_indicator_2}
-	# # 	sub_container['top_container'] = {'ref': first_top_container}, {'ref': second_top_container}
-	# # 	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
+	# Start instances
+	## Homewood Photo use case assumes there may be up to 3 physical containers and 1 digital object instance
+	instances = []
+	# first instance
 	if not first_top_container == '':
 		container = {'type_1': 'box', 'indicator_1': first_indicator_1, 'type_2': 'item', 'indicator_2': first_indicator_2}
 		sub_container = {'type_2': 'item', 'indicator_2': first_indicator_2}
 		sub_container['top_container'] = {'ref': first_top_container}
-		# aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}]
+		instance_1 = {'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}
+		instances.append(instance_1)
+	# second instance
+	if not second_top_container == '':
+ 		container = {'type_1': 'box', 'indicator_1': second_indicator_1, 'type_2': 'item', 'indicator_2': second_indicator_2}
+		sub_container = {'type_2': 'item', 'indicator_2': second_indicator_2}
+		sub_container['top_container'] = {'ref': second_top_container}
+		instance_2 = {'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}
+		instances.append(instance_2)
+	# third instance
+	if not third_top_container == '':
+ 		container = {'type_1': 'box', 'indicator_1': third_indicator_1, 'type_2': 'item', 'indicator_2': third_indicator_2}
+		sub_container = {'type_2': 'item', 'indicator_2': third_indicator_2}
+		sub_container['top_container'] = {'ref': third_top_container}
+		instance_3 = {'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}
+		instances.append(instance_3)
 	# digital objects
 	if not digital_object =='':
 		digital_object = {'ref': digital_object}
-	aoRecord['instances'] = [{'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}, {'instance_type': 'digital_object', 'digital_object': digital_object}]
+		digital_object_1 = {'instance_type': 'digital_object', 'digital_object': digital_object}
+		instances.append(digital_object_1)
+	# Finish up instances
+	aoRecord['instances'] = instances
 	# notes
 	# resource and parent
 	# Note: needs to have a linked resource or else NoMethodError
