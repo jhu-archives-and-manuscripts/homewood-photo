@@ -61,7 +61,7 @@ for row in csv_dict:
 	third_indicator_2 = row['Disc3']
 	digital_object = row['digital_object']
 	# construct JSON
-	aoRecord = {'publish': True, 'title': title, 'level': 'file'}
+	aoRecord = {'publish': False, 'title': title, 'level': 'file'}
 	# subjects
 	if not subject_1 == '' and not subject_2 == '':
 		aoRecord['subjects'] = {'ref': '/subjects/138'}, {'ref': subject_1}, {'ref': subject_2}
@@ -112,24 +112,6 @@ for row in csv_dict:
 	# notes
 	restriction_note = [{'jsonmodel_type': 'note_text', 'content': 'This digital content is available offline. Contact Special Collections for more information.', 'publish': True}]
 	aoRecord['notes'] = [{'jsonmodel_type': 'note_multipart', 'type': 'accessrestrict', 'publish': True, 'subnotes': restriction_note}]
-	# "notes": [
-    #     {
-    #         "jsonmodel_type": "note_multipart",
-    #         "type": "accessrestrict",
-    #         "rights_restriction": {
-    #             "local_access_restriction_type": []
-    #         },
-    #         "subnotes": [
-    #             {
-    #                 "jsonmodel_type": "note_text",
-    #                 "content": "This digital content is available offline. Contact Special Collections for more information.",
-    #                 "publish": true
-    #             }
-    #         ],
-    #         "persistent_id": "319ab366b74a826d516d06be907a3960",
-    #         "publish": true
-    #     }
-    # ]
 	# resource and parent
 	# Note: needs to have a linked resource or else NoMethodError
 	aoRecord['resource'] = {'ref': '/repositories/3/resources/' + resource_record}
