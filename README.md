@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+# Homewood Photography Project Documentation
 
 You can use the [editor on GitHub](https://github.com/jhu-archives-and-manuscripts/homewood-photo/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
