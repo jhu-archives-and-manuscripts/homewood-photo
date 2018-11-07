@@ -43,8 +43,11 @@ for row in csv_dict:
 	file_uri = row['fileuri']
 	title = row['title']
 	digital_object_id = row['objectid']
+	date_expression = row['dateExpression']
+	date_begin = row['dateBegin']
 	doRecord = {'title': title, 'digital_object_id': digital_object_id, 'publish': False}
 	doRecord['file_versions'] = [{'file_uri': file_uri, 'publish': False, 'file_format_name': 'dng'}]
+	doRecord['dates'] = [{'expression': date, 'begin': date, 'date_type': 'single', 'label': 'creation'}]
 	doRecord = json.dumps(doRecord)
 	post = requests.post(baseURL + '/repositories/'+ repository + '/digital_objects', headers=headers, data=doRecord).json()
 	print post
