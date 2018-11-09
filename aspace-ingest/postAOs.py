@@ -64,11 +64,11 @@ for row in csv_dict:
 	aoRecord = {'publish': False, 'title': title, 'level': 'file'}
 	# subjects
 	if not subject_1 == '' and not subject_2 == '':
-		aoRecord['subjects'] = {'ref': '/subjects/138'}, {'ref': subject_1}, {'ref': subject_2}
+		aoRecord['subjects'] = {'ref': subject_1}, {'ref': subject_2}
 	elif not subject_1 == '' and subject_2 == '':
-		aoRecord['subjects'] = {'ref': '/subjects/138'}, {'ref': subject_1}
+		aoRecord['subjects'] = {'ref': subject_1}
 	else:
-		aoRecord['subjects'] = [{'ref': '/subjects/138'}]
+		pass
 	# dates
 	aoRecord['dates'] = [{'expression': date_expression, 'begin': date_begin, 'date_type': 'single', 'label': 'creation'}]
 	# linked agents
