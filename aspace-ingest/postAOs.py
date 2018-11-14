@@ -59,6 +59,9 @@ for row in csv_dict:
 	third_top_container = row['top_container_3']
 	third_indicator_1 = row['Box3']
 	third_indicator_2 = row['Disc3']
+	fourth_top_container = row['top_container_4']
+	fourth_indicator_1 = row['Box4']
+	fourth_indicator_2 = row['Disc4']	
 	digital_object = row['digital_object']
 	# construct JSON
 	aoRecord = {'publish': False, 'title': title, 'level': 'file'}
@@ -102,6 +105,13 @@ for row in csv_dict:
 		sub_container['top_container'] = {'ref': third_top_container}
 		instance_3 = {'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}
 		instances.append(instance_3)
+	# fourth instance
+	if not fourth_top_container == '':
+ 		container = {'type_1': 'box', 'indicator_1': fourth_indicator_1, 'type_2': 'item', 'indicator_2': fourth_indicator_2}
+		sub_container = {'type_2': 'item', 'indicator_2': fourth_indicator_2}
+		sub_container['top_container'] = {'ref': fourth_top_container}
+		instance_4 = {'instance_type': 'mixed_materials', 'sub_container': sub_container, 'container': container}
+		instances.append(instance_4)
 	# digital objects
 	if not digital_object =='':
 		digital_object = {'ref': digital_object}
