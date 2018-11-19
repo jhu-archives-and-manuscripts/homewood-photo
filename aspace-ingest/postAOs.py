@@ -1,8 +1,19 @@
 import json, requests, csv, time, secrets
+from datetime import datetime
+
+# import secrets
+secretsVersion = raw_input('To edit production server, enter the name of the secrets file: ')
+if secretsVersion != '':
+    try:
+        secrets = __import__(secretsVersion)
+        print 'Editing Production'
+    except ImportError:
+        print 'Editing Development'
+else:
+    print 'Editing Development'
 
 startTime = time.time()
 
-# import secrets
 baseURL = secrets.baseURL
 user = secrets.user
 password = secrets.password
@@ -35,8 +46,9 @@ resource_record = raw_input('Enter resource record uri: ')
 parent_series = raw_input('Enter parent series uri: ')
 
 # Open csv, create new csv
+date = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 csv_dict = csv.DictReader(open(ao_csv))
-f=csv.writer(open('new_' + ao_csv, 'wb'))
+f=csv.writer(open(date + 'new_' + ao_csv, 'wb'))
 f.writerow(['title']+['dateBegin']+['uri'])
 
 # Construct JSON to post from csv
