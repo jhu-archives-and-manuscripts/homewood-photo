@@ -3,10 +3,21 @@
 # The script will prompt you first for the exact name of the CSV file, and then for the exact resource or accession to attach the containers to.
 
 import json, requests, secrets, csv, time
+from datetime import datetime
+
+# import secrets
+secretsVersion = raw_input('To edit production server, enter the name of the secrets file: ')
+if secretsVersion != '':
+    try:
+        secrets = __import__(secretsVersion)
+        print 'Editing Production'
+    except ImportError:
+        print 'Editing Development'
+else:
+    print 'Editing Development'
 
 startTime = time.time()
 
-# import secrets
 baseURL = secrets.baseURL
 user = secrets.user
 password = secrets.password
@@ -39,8 +50,9 @@ collection = raw_input('Enter resource record uri: ')
 container_profile = raw_input('Enter container profile uri: ')
 
 # Open csv, create new csv
+date = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 csv_dict = csv.DictReader(open(container_csv))
-f=csv.writer(open('new_' + container_csv, 'wb'))
+f=csv.writer(open(date + 'new_' + container_csv, 'wb'))
 f.writerow(['indicator']+['barcode']+['uri'])
 
 containerList = []
